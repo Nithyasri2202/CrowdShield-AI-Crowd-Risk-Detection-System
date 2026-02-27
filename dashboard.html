@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard • CrowdShield</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="nav">
+    <strong style="margin-right:auto;">CrowdShield</strong>
+    <a href="/dashboard" class="active">Dashboard</a>
+    <a href="/image">Image Detection</a>
+    <a href="/logout">Logout</a>
+  </div>
+
+  <div class="container glass">
+    <h2>Interactive Dashboard 🧭</h2>
+
+    <div class="grid">
+      <div class="card lift">
+        <h3>Total People (Last)</h3>
+        <p class="big">{{ stats.people if stats and stats.people is not none else "N/A" }}</p>
+      </div>
+
+      <div class="card lift {{ 'danger pulse' if stats.risk == 'HIGH' else 'ok' }}">
+        <h3>Risk Level</h3>
+        <p class="big">{{ stats.risk }}</p>
+      </div>
+
+      <div class="card lift">
+        <h3>Last Updated</h3>
+        <p>{{ stats.time if stats and stats.time else "N/A" }}</p>
+      </div>
+    </div>
+
+    <div class="actions">
+      <a class="btn" href="/image">Analyze New Image</a>
+    </div>
+  </div>
+</body>
+</html>

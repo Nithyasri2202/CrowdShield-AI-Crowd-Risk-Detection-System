@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login • CrowdShield</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="auth-bg">
+  <div class="auth-card">
+    <h2>Welcome Back 👋</h2>
+    <p class="muted">Login to continue</p>
+
+    {% if error %}
+      <div class="alert">{{ error }}</div>
+    {% endif %}
+
+    <form method="POST">
+      <input name="email" type="email" placeholder="Email" required />
+      <input name="password" type="password" placeholder="Password" required />
+      <button class="btn full" type="submit">Login</button>
+    </form>
+
+    <p class="muted">Don’t have an account? <a href="/register">Create one</a></p>
+  </div>
+</body>
+</html>

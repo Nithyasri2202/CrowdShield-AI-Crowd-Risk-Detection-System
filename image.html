@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Image Detection • CrowdShield</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="nav">
+    <a href="/dashboard">Dashboard</a>
+    <a href="/image" class="active">Image Detection</a>
+    <a href="/logout">Logout</a>
+  </div>
+
+  <div class="container glass">
+    <h2>Image Detection 📸</h2>
+    <p class="muted">Upload an image to analyze crowd risk.</p>
+
+    <form class="card lift" action="/analyze_image" method="POST" enctype="multipart/form-data">
+      <input type="file" name="image" accept="image/*" required />
+      <button class="btn full" type="submit">Analyze Image</button>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Analysis Result • CrowdShield</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="nav">
+    <strong style="margin-right:auto;">CrowdShield</strong>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/image">Image Detection</a>
+    <a href="/logout">Logout</a>
+  </div>
+
+  <div class="container glass">
+    <h2>🧍 Human Count Summary</h2>
+
+    <div class="summary green">
+      <strong>Total People Detected:</strong> {{ people_count }}
+      <p class="small">(Counted: Running, Sitting, Standing, Moving behaviors)</p>
+    </div>
+
+    <h3>⚠️ Risk Analysis</h3>
+
+    {% for alert in alerts %}
+      <div class="alert-box 
+        {% if 'HIGH' in alert %}danger{% elif 'LARGE' in alert %}warn{% else %}info{% endif %}">
+        {{ alert }}
+      </div>
+    {% endfor %}
+
+    {% if final_message %}
+      <div class="final-risk">
+        <h3>🚨 {{ final_message.title }}</h3>
+        <ul>
+          {% for d in final_message.details %}
+            <li>{{ d }}</li>
+          {% endfor %}
+        </ul>
+        <p class="email-note">📩 Email alert has been sent to the registered admin.</p>
+      </div>
+    {% endif %}
+
+    <div class="behavior">
+      <h4>🏃 Running Behavior Detected</h4>
+      <p>
+        Running in crowded areas can lead to panic. Monitor the situation.<br>
+        <strong>Running Count:</strong> {{ running_count }} people
+      </p>
+    </div>
+
+    {% if emotions %}
+  <div class="behavior">
+    <h4>😨 Emotion Analysis (Faces Detected)</h4>
+    <p>
+      Detected emotions:
+      {% for e in emotions %}
+        <span class="tag">{{ e }}</span>
+      {% endfor %}
+    </p>
+  </div>
+{% endif %}
+
+
+    <div class="actions">
+      <a class="btn" href="/image">Analyze Another Image</a>
+      <a class="btn outline" href="/dashboard">Back to Dashboard</a>
+    </div>
+  </div>
+</body>
+</html>

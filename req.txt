@@ -1,0 +1,11 @@
+crowdshield/
+├─ app.py
+├─ users.db
+├─ templates/
+│  ├─ base.html
+│  ├─ login.html
+│  ├─ register.html
+│  ├─ image.html
+│  └─ result.html
+└─ static/
+   └─ style.css 

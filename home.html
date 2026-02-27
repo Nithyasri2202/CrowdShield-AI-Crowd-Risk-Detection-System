@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Welcome • CrowdShield</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="hero-bg">
+  <div class="nav">
+    <strong style="margin-right:auto;">CrowdShield</strong>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/image">Image Detection</a>
+    <a href="/live">Live Detection</a>
+    <a href="/logout" class="btn small">Logout</a>
+  </div>
+
+  <section class="hero">
+    <h1>Welcome to CrowdShield 👋</h1>
+    <p>AI-powered system for predicting and preventing stampedes in crowded places.</p>
+
+    <div class="hero-actions">
+      <a class="btn big" href="/image">Image Detection</a>
+      <a class="btn big secondary" href="/live">Live Detection</a>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="feature-card">
+      <h3>Real-time Detection</h3>
+      <p>Monitor crowd behavior in real-time using advanced computer vision.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Image Analysis</h3>
+      <p>Upload images to detect crowd density and potential risk.</p>
+    </div>
+    <div class="feature-card">
+      <h3>AI-Powered Analysis</h3>
+      <p>YOLO-based accurate detection of panic-inducing crowd behavior.</p>
+    </div>
+  </section>
+</body>
+</html>
